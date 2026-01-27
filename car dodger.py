@@ -15,7 +15,7 @@ t.title("racing")
 t.hideturtle()
 t.pencolor("red")
 t.fillcolor("red")
-t.bgcolor("black")
+t.bgcolor("green")
 def car():
     t.goto(carx, cary)
     t.pencolor("red")
@@ -78,6 +78,33 @@ def movobst():
 
 
 def lanes():
+    
+
+
+    t.penup()
+    t.goto(-70, 400)
+    t.pendown()
+
+
+    t.fillcolor("gray")
+    t.begin_fill()
+
+
+    t.setheading(0)
+    t.forward(165)
+    t.right(90)
+    t.forward(800)
+    t.right(90)
+    t.forward(165)
+    t.right(90)
+    t.forward(800)
+
+    t.end_fill()
+    t.penup()
+    t.fillcolor("green")
+    t.setheading(0)
+
+
     global laney
     t.fillcolor("red")
     t.goto(0, laney)
@@ -92,6 +119,8 @@ def lanes():
     laney += 10
     if laney >= 400:
         laney = 300
+
+    
 def right():
     global carx
     if carx < 50:
@@ -126,11 +155,12 @@ def mainloop():
     
 
 
+
+    scoreboard()
+    lanes()
     car()
     obstacle()
     movobst()
-    scoreboard()
-    lanes()
     t.update()
 
 
