@@ -156,11 +156,13 @@ def mainloop():
 
 
 
-    scoreboard()
+    
     lanes()
     car()
     obstacle()
+    scoreboard()
     movobst()
+    
     t.update()
 
 
