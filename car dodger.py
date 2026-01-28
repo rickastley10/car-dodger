@@ -3,6 +3,7 @@ import random
 t.tracer(0, 0)
 t.delay(0)
 t.penup()
+cheats = 0
 carx, cary = -50, -100
 obstx, obsty = 50, 300
 lane = 1
@@ -84,10 +85,6 @@ def movobst():
         score = 0
         obsty = 300
         obstx = 50
-        global obst1x, obst1y
-        score = 0
-        obst1y = 300
-        obst1x = 50
 
 
 
@@ -182,8 +179,13 @@ def mainloop():
     scoreboard()
     movobst()
     
+    if cheats == 1:
+        if obstx == 50:
+            left()
+        elif obstx == -50:
+            right()
+
+
     t.update()
-
-
     t.ontimer(mainloop, 30)
 t.mainloop()
