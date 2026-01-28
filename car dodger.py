@@ -9,12 +9,26 @@ lane = 1
 score = 0
 speed = 30
 laney = 400
+started = 0
 t.setup(400, 600)
 t.title("racing")
 
 t.hideturtle()
 t.pencolor("red")
 t.fillcolor("red")
+
+def menu():
+    t.pencolor("black")
+    t.goto(0, 0)
+    t.write("car dodger\npress space to start",align="center", font=("Arial", 16, "normal"))
+    t.update()
+    t.pencolor("red")
+menu()
+def start(x=0, y=0):
+    global started
+    if started == 0:
+        started += 1
+        mainloop()
 t.bgcolor("green")
 def car():
     t.goto(carx, cary)
@@ -132,10 +146,13 @@ def left():
         carx -= 100
 
 def click(x, y):
-    if 0 < x:
-        right()
-    elif x < 0:
-        left()
+    if started >= 1:
+        if 0 < x:
+            right()
+        elif x < 0:
+            left()
+    elif started == 0:
+        start()
 def scoreboard():
     t.fillcolor("red")
     t.goto(0, 0)
@@ -144,6 +161,8 @@ def scoreboard():
 
 
 t.onscreenclick(click)
+
+t.onkey(start, "space")
 t.onkey(left, "Left")
 t.onkey(right, "Right")
 t.onkey(left, "a")
@@ -167,6 +186,4 @@ def mainloop():
 
 
     t.ontimer(mainloop, 30)
-
-mainloop()
 t.mainloop()
